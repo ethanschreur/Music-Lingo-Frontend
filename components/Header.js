@@ -34,7 +34,7 @@ export default function Header({ headerType, username }) {
                 >
                     {theme == 'dark' ? <MoonIcon className="h-11" /> : <SunIcon className="h-11" />}
                 </span>
-                <div>MUSIC LINGO</div>
+                <div><a href="/">MUSIC LINGO</a></div>
             </div>
 
         </header>

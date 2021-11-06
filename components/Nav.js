@@ -26,7 +26,11 @@ export default function Nav({ type }) {
         const newInitialClicksRemaining = (Math.abs(Math.ceil((newChildSize - newParentSize) / (newParentSize * scrollPercent))))
         setInitialClicksRemaining(newInitialClicksRemaining);
         setBlnHideBackward(true);
-        setBlnHideForward(newChildSize < newParentSize)
+        console.log('child')
+        console.log(newChildSize)
+        console.log('parent')
+        console.log(newParentSize)
+        setBlnHideForward(newChildSize <= newParentSize)
     }, [])
 
     const recalculateScrollProps = () => {
@@ -87,7 +91,7 @@ export default function Nav({ type }) {
 
             </div>
             {!blnHideBackward ? <div className="absolute top-0 left-0 bg-gradient-to-r from-[#fdfdfd] dark:from-[#2a2e45] h-full w-1/6 flex justify-end" /> : <></>}
-            {!blnHideForward ? <div className="absolute top-0 right-0 bg-gradient-to-l from-[#fdfdfd] dark:from-[#2a2e45] h-full w-1/6 flex justify-end" /> : <></>}
+            {!blnHideForward || false ? <div className="absolute top-0 right-0 bg-gradient-to-l from-[#fdfdfd] dark:from-[#2a2e45] h-full w-1/6 flex justify-end" /> : <></>}
         </nav >
 
     )

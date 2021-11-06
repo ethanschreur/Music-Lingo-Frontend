@@ -39,3 +39,9 @@
 		/* 070706 */
 	}
 }
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+

@@ -1,0 +1,62 @@
+name: Lingo.fm
+
+on:
+  push:
+    branches: [ '*' ]
+
+jobs:
+  built:
+    container: gradle:jdk11
+
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres:13
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+ 
+    runs-on: ubuntu-latest
+
+    env: 
+        secret_key: ${{ secrets.SECRET_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.github_token }}
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+        
+    - name: Install dependencies
+      run: |
+        npm install
+        
+    - name: Use postgresql client
+      run: |
+        apt-get update
+        apt-get install --yes --no-install-recommends postgresql-client
+    - name: Create database
+      run: |
+        PGPASSWORD=postgres psql -c 'create database lingo_fm_test;' -U postgres -h postgres
+    - name: Run tests
+      run: |
+        npm test -- --coverage
+
+     # Save coverage report in Coveralls
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -105,12 +105,12 @@ export default function SignUp({ headerType }) {
                             I want to learn:
                         </label>
                         {/* <input id="language" type="text" className="p-3 bg-[#fdfdfd] dark:bg-[#2a2e45] rounded-lg mt-2" /> */}
+
                         <select name="current_language" id="current_language" onChange={handleChange} className="p-3 bg-[#e8f0fe] dark:bg-[#35405b] rounded-lg mt-2 h-max-30" >
                             <option>Select a language</option>
                             {(languageCodes).map((code) => <option value={code}>{codeToLanguage[code]}</option>)}
                         </select>
                     </div>
-
                     <div onClick={submitForm} className="mt-8 text-2xl rounded-lg cursor-pointer border-2 border-[#2a2e45] dark:border-[#fdfdfd] dark:text-[#cbcde8]  text-[#596088]  dark:hover:text-[#fdfdfd] hover:text-[#2a2e45]">
                         <button onClick={submitForm} className="text-xl font-bold rounded-lg bg-[#fdfdfd] dark:bg-[#2a2e45] p-2 px-6 ">Get Started</button>
                     </div>
