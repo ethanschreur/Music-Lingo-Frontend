@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	body {
+		/* light blue */
+		/* 596088 */
+		/* 2a2e45 */
+		/* 1d2142 */
+		/* dark blue */
+		/* white */
+		/* fdfdfd */
+		/* black */
+		/* 070706 */
+		/* night light */
+		/* fbdfcb */
+		/* f2cbc9 */
+		/* e6e2e7 */
+		/* night dark */
+		/* youtube dark */
+		/* 181818 */
+		/* youtube light */
+		/* 212121 */
+		@apply bg-[#fdfdfd] text-[#2a2e45] dark:bg-[#2a2e45] dark:text-[#fdfdfd] scrollbar-hide;
+
+	    /* dark background */
+		/* 2a2e45 */ 
+		/* dark text-default-color */
+		/* e6e2e7 */
+		/* dark text-hover-color */
+		/* fdfdfd */
+
+		/* light background */
+		/* fdfdfd */
+		/* light text-default-color */
+		/* 2a2e45 */
+		/* light text-hover-color */
+		/* 070706 */
+	}
+}
